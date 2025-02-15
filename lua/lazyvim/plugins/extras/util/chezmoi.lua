@@ -63,6 +63,7 @@ return {
       vim.g["chezmoi#source_dir_path"] = os.getenv("HOME") .. "/.local/share/chezmoi"
     end,
   },
+
   {
     "xvzc/chezmoi.nvim",
     keys = {
@@ -96,6 +97,7 @@ return {
       })
     end,
   },
+
   {
     "nvimdev/dashboard-nvim",
     optional = true,
@@ -118,6 +120,19 @@ return {
       end
 
       table.insert(opts.config.center, 5, projects)
+    end,
+  },
+
+  {
+    "folke/snacks.nvim",
+    optional = true,
+    opts = function(_, opts)
+      table.insert(opts.dashboard.preset.keys, 3, {
+        action = pick_chezmoi,
+        desc = "Config",
+        icon = "",
+        key = "c",
+      })
     end,
   },
 
